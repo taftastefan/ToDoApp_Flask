@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Add Todo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_todo_styles.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add Todo</h1>
+        <form method="post">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.title.label }}<br>
+                {{ form.title(size=40) }}
+            </div>
+            <div class="form-group">
+                {{ form.description.label }}<br>
+                {{ form.description(cols=40, rows=5) }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn-submit") }}
+            </div>
+        </form>
+        <p><a href="{{ url_for('index') }}" class="btn-back">Back to List</a></p>
+    </div>
+</body>
+</html>

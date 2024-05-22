@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Todo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_todo_styles.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Edit Todo</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.title.label }}<br>
+                {{ form.title(size=32) }}
+            </div>
+            <div class="form-group">
+                {{ form.description.label }}<br>
+                {{ form.description(rows=5, cols=32) }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn-submit") }}
+            </div>
+        </form>
+        <p><a href="{{ url_for('index') }}" class="btn-back">Back to Todo List</a></p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
